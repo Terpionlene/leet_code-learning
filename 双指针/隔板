@@ -1,0 +1,18 @@
+class Solution:
+    def numberOfways(self, corridor:str) -> int:
+        mod=10**9+7
+        last_s=0
+        ans=1
+        total_s = 0
+        for i,ch in enumerate(corridor):
+            if ch=="S":
+                total_s+=1
+                if total_s%2 and total_s>=3:
+                    ans=ans*(i-last_s)%mod
+                last_s=i
+        if total_s==0 or total_s%2:
+            return 0
+
+        return ans
+
+
